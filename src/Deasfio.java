@@ -13,7 +13,7 @@ public class Deasfio {
         System.out.println("Olá, bem vindo! Neste programa podemos calcular a média aritimética ou harmonica de uma lista de números.");
         System.out.println("\nPrimeiro, digite a quantidade de números que deseja calcular a média:");
 
-        int size = input.nextInt();
+        int size = getSize(input);
         double[] arr = new double[size];
 
         System.out.println("Agora nos diga quais os números que deseja calcular a média:");
@@ -42,7 +42,7 @@ public class Deasfio {
                 for (int i = 0; i < size; i++) {
                     System.out.print(arr[i] + " | ");
                 }
-                System.out.println("\nA media escolhida foi: " + type);
+                System.out.println("\nA media escolhida foi: " + type.toUpperCase());
                 System.out.println("O valor da media: " + aritimetica(arr, size));
                 break;
             case 2:
@@ -50,7 +50,7 @@ public class Deasfio {
                 for (int i = 0; i < size; i++) {
                     System.out.print(arr[i] + " | ");
                 }
-                System.out.println("\nA media escolhida foi: " + type);
+                System.out.println("\nA media escolhida foi: " + type.toUpperCase());
                 System.out.println("O valor da media: " + harmonica(arr, size));
                 break;
             default:
@@ -74,6 +74,19 @@ public class Deasfio {
         }
 
         return sum / size;
+    }
+
+    static int getSize (Scanner input) {
+        try{
+            System.out.println("Digite um numero inteiro:");
+            return Integer.parseInt(input.next());
+        } catch (InputMismatchException e) {
+            System.out.println("O tipo digitado está incorreto. Tente novamente.");
+            return getSize(input);
+        } catch (Exception e) {
+            System.out.println("Não foi possivel obeter o número");
+            return getSize(input);
+        }
     }
 
     static double getNumber(Scanner input) {
